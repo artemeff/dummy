@@ -1,0 +1,8 @@
+{"2",
+    [{"1", [
+        {update,dummy_db,{advanced,[from1to2]}}
+    ]}],
+    [{"1",[
+        {update,dummy_db,{advanced,[from2to1]}}
+    ]}]
+}.

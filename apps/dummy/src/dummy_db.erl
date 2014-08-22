@@ -40,7 +40,7 @@ init(_) ->
 
 handle_call({get, Key}, _From, State) ->
     Reply = case proplists:get_value(Key, State#db.store) of
-        undefined -> not_found;
+        undefined -> {not_found, Key};
         Value -> {ok, Value}
     end,
     {reply, Reply, State};
@@ -64,5 +64,9 @@ handle_info(_Info, State) ->
 terminate(_Reason, _State) ->
     ok.
 
+code_change(_OldVsn, State, [from1to2]) ->
+    {ok, State#db{vsn = 2}};
+code_change(_OldVsn, State, [from2to1]) ->
+    {ok, State#db{vsn = 1}};
 code_change(_OldVsn, State, _Extra) ->
     {ok, State}.
