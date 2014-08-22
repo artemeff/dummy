@@ -1,0 +1,8 @@
+{application, dummy, [
+  {description, "Dummy KVDB"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [kernel, stdlib]},
+  {mod, {dummy_app, []}},
+  {env, []}
+ ]}.
